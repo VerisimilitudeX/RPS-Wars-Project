@@ -5,11 +5,10 @@ LESSON: RPS Wars Project
 2. Keep Score: The number of times a player wins will be displayed at the end
 3. Each player gets a screen-clearing special move every 20 seconds (Player 1 KEY: Q | Player 2 KEY: O)
 4. Multi-language support so that all can enjoy
-5. Personalize player colors
+5. Random player colors and fill window with the victorious player's random color
 """
 
-import tsk
-import pygame
+import tsk, pygame, random
 
 pygame.init()
 w = pygame.display.set_mode([1018, 573])
@@ -18,6 +17,14 @@ background = tsk.Sprite("TowerSiege.jpg", 0, 0)
 
 player1 = []
 player2 = []
+
+colors = [(255, 0, 0), (0, 255, 0), (0, 0, 255), (255, 255, 0), (0, 255, 255), (255, 255, 255), (132, 32, 21), (123, 43, 43), (212, 243, 121)]
+
+index1 = random.randint(0, len(colors) - 1)
+color_player_1 = colors[index1]
+
+index2 = random.randint(0, len(colors) - 1)
+color_player_2 = colors[index2]
 
 player1_score = 0
 player2_score = 0
@@ -53,7 +60,7 @@ if language == "English" or language == "english":
         pygame.time.wait(6000)
         print("4. Multi-language support so that all can enjoy")
         pygame.time.wait(6000)
-        print("5. Personalize player colors")
+        print("5. Randomize player colors and fill window with the victorious player's random color")
         pygame.time.wait(6000)
 
     player1name = input("Please enter your name, Player 1: ")
@@ -153,7 +160,7 @@ else:
         pygame.time.wait(6000)
         print("4. Multi-language support so that all can enjoy")
         pygame.time.wait(6000)
-        print("5. Personalize player colors")
+        print("5. Randomize player colors and fill window with the victorious player's random color")
         pygame.time.wait(6000)
     
     player1name = input("Please enter your name, Player 1: ")
@@ -229,7 +236,7 @@ while playing:
             playing = False
             player1_win = True
 
-        pygame.draw.circle(w, (0, 200, 0), (i.center_x, i.center_y - 125), 25)  
+        pygame.draw.circle(w, color_player_1, (i.center_x, i.center_y - 125), 25)  
 
     for j in player2:
         j.x -= 0.15 * c.get_time()
@@ -237,8 +244,8 @@ while playing:
         if j.x < 0 - 130:
             playing = False
             player1_win = False     
-
-        pygame.draw.circle(w, (0, 0, 200), (j.center_x, j.center_y - 125), 25)   
+        
+        pygame.draw.circle(w, color_player_2, (j.center_x, j.center_y - 125), 25)   
 
     player1_removal = None
     player2_removal = None
@@ -285,19 +292,31 @@ if language == "English" or language == "english":
     if player1_win:
         print("Congratulations " + player1name + "!")
         print("You won!")
+        background.visible = False
+        w.fill(color_player_1)
+        input()
     else:
-        print("Congratulations " + player1name + "!")
+        print("Congratulations " + player2name + "!")
         print("You won!")
-
+        background.visible = False
+        w.fill(color_player_2)
+        input()
+        
 if language == "Spanish" or language == "spanish":
     print(player1name + "'s Puntuación: " + str(player1_score))
     print(player2name + "'s Puntuación: " + str(player2_score))
     if player1_win:
         print("Congradaciones " + player1name + "!")
         print("¡Ganaste!")
+        background.visible = False
+        w.fill(color_player_1)
+        input()
     else:
-        print("Congradaciones " + player1name + "!")
+        print("Congradaciones " + player2name + "!")
         print("¡Ganaste!")
+        background.visible = False
+        w.fill(color_player_2)
+        input()
 
 if language == "Chinese" or language == "chinese":
     print(player1name + "'s 标点: " + str(player1_score))
@@ -305,9 +324,15 @@ if language == "Chinese" or language == "chinese":
     if player1_win:
         print("祝贺 " + player1name + "!")
         print("赢得！")
+        background.visible = False
+        w.fill(color_player_1)
+        input()
     else:
-        print("祝贺 " + player1name + "!")
+        print("祝贺 " + player2name + "!")
         print("赢得！")
+        background.visible = False
+        w.fill(color_player_2)
+        input()
 
 if language == "Hindi" or language == "hindi":
     print(player1name + "'s अंक: " + str(player1_score))
@@ -315,16 +340,28 @@ if language == "Hindi" or language == "hindi":
     if player1_win:
         print("बधाइयाँ " + player1name + "!")
         print("आप जीत गए!")
+        background.visible = False
+        w.fill(color_player_1)
+        input()
     else:
-        print("बधाइयाँ " + player1name + "!")
+        print("बधाइयाँ " + player2name + "!")
         print("आप जीत गए!")
+        background.visible = False
+        w.fill(color_player_2)
+        input()
 
 else:
     print(player1name + "'s Score: " + str(player1_score))
     print(player2name + "'s Score: " + str(player2_score))
     if player1_win:
-        print("Congradulations " + player1name + "!")
+        print("Congratulations " + player1name + "!")
         print("You won!")
+        background.visible = False
+        w.fill(color_player_1)
+        input()
     else:
-        print("Congradulations " + player1name + "!")
+        print("Congratulations " + player2name + "!")
         print("You won!")
+        background.visible = False
+        w.fill(color_player_2)
+        input()
