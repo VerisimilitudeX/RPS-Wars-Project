@@ -1,5 +1,5 @@
 """
-LESSON: RPS Wars Project
+RPS Wars Project
 
 1. Make this a 2-player game (Player 1: A [rock], S [paper], D [scissors] | Player 2: J [rock], K [paper], L [scissors])
 2. Keep Score: The number of times a player wins will be displayed at the end
