@@ -1,15 +1,8 @@
-"""
-LESSON: RPS Wars Project
-WARMUP 2
-"""
-
 import random
 import pygame
 pygame.init()
 
-# GET COLOR FUNCTION
 def get_color(color_name):
-    # Return a color tuple based on the name given
     if color_name == "red":
         return (255, 0, 0)
     if color_name == "green":
@@ -19,7 +12,6 @@ def get_color(color_name):
 
     return (255, 255, 255)
 
-# MAIN PROGRAM
 w = pygame.display.set_mode([200, 200])
 w.fill((255, 255, 255))
 pygame.display.flip()
@@ -38,4 +30,3 @@ while drawing:
         w.fill(color_tuple)
 
     pygame.display.flip()
-
