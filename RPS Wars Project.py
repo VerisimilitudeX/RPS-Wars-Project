@@ -1,5 +1,5 @@
 """
-RPS Wars Project
+LESSON: RPS Wars Project
 
 1. Make this a 2-player game (Player 1: A [rock], S [paper], D [scissors] | Player 2: J [rock], K [paper], L [scissors])
 2. Keep Score: The number of times a player wins will be displayed at the end
@@ -22,6 +22,8 @@ colors = [(255, 0, 0), (0, 255, 0), (0, 0, 255), (255, 255, 0), (0, 255, 255), (
 
 index1 = random.randint(0, len(colors) - 1)
 color_player_1 = colors[index1]
+
+pygame.time.wait(100)
 
 index2 = random.randint(0, len(colors) - 1)
 color_player_2 = colors[index2]
